@@ -1,0 +1,109 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Background (deep crimson) -->
+    <path
+        android:fillColor="#7A0000"
+        android:pathData="M0,0h108v108h-108z" />
+
+    <!-- Ground strip (dark green) -->
+    <path
+        android:fillColor="#063A20"
+        android:pathData="M0,78h108v30h-108z" />
+
+    <!-- Solid trunk (filled for strong silhouette) -->
+    <path
+        android:fillColor="#063A20"
+        android:pathData="
+            M52,78
+            C52,70 48,60 50,52
+            C52,44 56,44 58,52
+            C60,60 56,70 56,78
+            Z" />
+
+    <!-- Primary branches (thicker, tapered strokes) -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#063A20"
+        android:strokeWidth="4.2"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M54,52 C48,44 40,38 32,34" />
+
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#063A20"
+        android:strokeWidth="4.2"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M54,52 C60,44 68,38 76,34" />
+
+    <!-- Secondary splits (medium thickness) -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#063A20"
+        android:strokeWidth="3.0"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M40,40 C36,36 34,32 30,28" />
+
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#063A20"
+        android:strokeWidth="3.0"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M68,40 C72,36 74,32 78,28" />
+
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#063A20"
+        android:strokeWidth="3.0"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M36,34 C32,30 30,26 28,22" />
+
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#063A20"
+        android:strokeWidth="3.0"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M72,34 C76,30 78,26 80,22" />
+
+    <!-- Tertiary twigs (fine strokes for natural detail) -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#063A20"
+        android:strokeWidth="1.8"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M34,30 C33,28 32,26 31,24" />
+
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#063A20"
+        android:strokeWidth="1.8"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M76,30 C77,28 78,26 79,24" />
+
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#063A20"
+        android:strokeWidth="1.6"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M44,36 C42,34 40,32 39,30" />
+
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#063A20"
+        android:strokeWidth="1.6"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M62,36 C64,34 66,32 67,30" />
+</vector>
