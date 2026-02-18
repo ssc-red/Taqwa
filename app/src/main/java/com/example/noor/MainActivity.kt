@@ -6,7 +6,6 @@ import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Build
 import android.os.Bundle
@@ -33,7 +32,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.core.content.ContextCompat
 import androidx.glance.appwidget.updateAll
 import com.example.noor.ui.theme.NoorTheme
 import com.google.android.gms.location.LocationServices
@@ -80,22 +78,22 @@ fun RamadanScreen(isDarkMode: Boolean, onThemeChange: (Boolean) -> Unit) {
 
     fun updateWidget(times: List<PrayerTime>) {
         val prefs = context.getSharedPreferences("NoorPrefs", Context.MODE_PRIVATE)
-        val saherTime = times.find { it.name.contains("Saher") }?.time ?: ""
+        val sehriTime = times.find { it.name.contains("Sehri") }?.time ?: ""
         val iftarTime = times.find { it.name.contains("Iftar") }?.time ?: ""
         
         val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
         val now = sdf.format(Date())
         
         val nextMainEvent = when {
-            saherTime > now -> PrayerTime("Sehri", saherTime)
+            sehriTime > now -> PrayerTime("Sehri", sehriTime)
             iftarTime > now -> PrayerTime("Iftar", iftarTime)
-            else -> PrayerTime("Sehri", saherTime) // Tomorrow
+            else -> PrayerTime("Sehri", sehriTime) // Tomorrow
         }
         
         prefs.edit().apply {
-            putString("saher", formatToAmPm(saherTime))
+            putString("sehri", formatToAmPm(sehriTime))
             putString("iftar", formatToAmPm(iftarTime))
-            putString("saher_raw", saherTime)
+            putString("sehri_raw", sehriTime)
             putString("iftar_raw", iftarTime)
             putString("nextEvent", nextMainEvent.name)
             putString("nextTime", getCountdownString(nextMainEvent.time))
@@ -171,10 +169,10 @@ fun RamadanScreen(isDarkMode: Boolean, onThemeChange: (Boolean) -> Unit) {
                         
                         updateWidget(times)
                         
-                        val saherTime = times.find { it.name.contains("Saher") }?.time ?: ""
+                        val sehriTime = times.find { it.name.contains("Sehri") }?.time ?: ""
                         val iftarTime = times.find { it.name.contains("Iftar") }?.time ?: ""
                         
-                        if (saherTime.isNotEmpty() && notificationGranted) scheduleNotification(saherTime, "Sehri Time", "It's time for Sehri!", 1001)
+                        if (sehriTime.isNotEmpty() && notificationGranted) scheduleNotification(sehriTime, "Sehri Time", "It's time for Sehri!", 1001)
                         if (iftarTime.isNotEmpty() && notificationGranted) scheduleNotification(iftarTime, "Iftar Time", "It's time for Iftar!", 1002)
 
                         isLoading = false
@@ -239,16 +237,16 @@ fun RamadanScreen(isDarkMode: Boolean, onThemeChange: (Boolean) -> Unit) {
             CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
         } else {
             // Display only the next Sehri or Iftar event at the top with countdown
-            val saherTime = prayerTimes.find { it.name.contains("Saher") }?.time ?: ""
+            val sehriTime = prayerTimes.find { it.name.contains("Sehri") }?.time ?: ""
             val iftarTime = prayerTimes.find { it.name.contains("Iftar") }?.time ?: ""
-            val saherEvent = PrayerTime("Sehri", saherTime)
+            val sehriEvent = PrayerTime("Sehri", sehriTime)
             val iftarEvent = PrayerTime("Iftar", iftarTime)
 
             // Determine which event is next
             val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
             val now = sdf.format(Date())
             val nextMainEvent = when {
-                saherTime > now -> saherEvent
+                sehriTime > now -> sehriEvent
                 iftarTime > now -> iftarEvent
                 else -> iftarEvent // Tomorrow's iftar
             }
@@ -359,7 +357,7 @@ fun RamadanScreen(isDarkMode: Boolean, onThemeChange: (Boolean) -> Unit) {
 
 @Composable
 fun PrayerRow(prayer: PrayerTime) {
-    val isMain = prayer.name.contains("Iftar") || prayer.name.contains("Saher")
+    val isMain = prayer.name.contains("Iftar") || prayer.name.contains("Sehri")
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
@@ -445,7 +443,7 @@ fun fetchPrayerTimes(lat: Double, lon: Double, onResult: (List<PrayerTime>) -> U
             val timings = JSONObject(text).getJSONObject("data").getJSONObject("timings")
 
             val list = listOf(
-                PrayerTime("Saher / Fajr", timings.getString("Fajr")),
+                PrayerTime("Sehri / Fajr", timings.getString("Fajr")),
                 PrayerTime("Dhuhr", timings.getString("Dhuhr")),
                 PrayerTime("Asr", timings.getString("Asr")),
                 PrayerTime("Iftar / Maghrib", timings.getString("Maghrib")),

@@ -12,17 +12,17 @@ class WidgetUpdateWorker(private val context: Context, workerParams: WorkerParam
 
     override suspend fun doWork(): Result {
         val prefs = context.getSharedPreferences("NoorPrefs", Context.MODE_PRIVATE)
-        val saherTime = prefs.getString("saher_raw", "") ?: ""
+        val sehriTime = prefs.getString("sehri_raw", "") ?: ""
         val iftarTime = prefs.getString("iftar_raw", "") ?: ""
 
-        if (saherTime.isNotEmpty() && iftarTime.isNotEmpty()) {
+        if (sehriTime.isNotEmpty() && iftarTime.isNotEmpty()) {
             val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
             val now = sdf.format(Date())
 
             val nextMainEvent = when {
-                saherTime > now -> PrayerTime("Sehri", saherTime)
+                sehriTime > now -> PrayerTime("Sehri", sehriTime)
                 iftarTime > now -> PrayerTime("Iftar", iftarTime)
-                else -> PrayerTime("Sehri", saherTime) // Simplified tomorrow
+                else -> PrayerTime("Sehri", sehriTime) // Simplified tomorrow
             }
 
             prefs.edit().apply {

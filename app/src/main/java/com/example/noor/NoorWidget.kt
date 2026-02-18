@@ -38,7 +38,7 @@ import com.example.noor.ui.theme.DarkGrey
 class NoorWidget : GlanceAppWidget() {
     override suspend fun provideGlance(context: Context, id: GlanceId) {
         val prefs = context.getSharedPreferences("NoorPrefs", Context.MODE_PRIVATE)
-        val saher = prefs.getString("saher", "04:30 AM") ?: "04:30 AM"
+        val sehri = prefs.getString("sehri", "04:30 AM") ?: "04:30 AM"
         val iftar = prefs.getString("iftar", "06:45 PM") ?: "06:45 PM"
         val nextEvent = prefs.getString("nextEvent", "Iftar") ?: "Iftar"
         val nextTime = prefs.getString("nextTime", "06:45 PM") ?: "06:45 PM"
@@ -47,7 +47,7 @@ class NoorWidget : GlanceAppWidget() {
         val isDarkMode = isSystemInDarkMode(context)
 
         provideContent {
-            WidgetContent(saher, iftar, nextEvent, nextTime, isDarkMode)
+            WidgetContent(sehri, iftar, nextEvent, nextTime, isDarkMode)
         }
     }
 
@@ -57,7 +57,7 @@ class NoorWidget : GlanceAppWidget() {
     }
 
     @Composable
-    private fun WidgetContent(saher: String, iftar: String, nextEvent: String, nextTime: String, isDarkMode: Boolean) {
+    private fun WidgetContent(sehri: String, iftar: String, nextEvent: String, nextTime: String, isDarkMode: Boolean) {
         val bgColor = if (isDarkMode) DarkBg else LightBg
         val cardColor = if (isDarkMode) DarkSurface else LightSurface
         val textColor = if (isDarkMode) PureWhite else DarkGrey
@@ -152,7 +152,7 @@ class NoorWidget : GlanceAppWidget() {
                         )
                         Spacer(modifier = GlanceModifier.height(4.dp))
                         Text(
-                            text = saher,
+                            text = sehri,
                             style = TextStyle(
                                 color = ColorProvider(textColor),
                                 fontWeight = FontWeight.Bold
