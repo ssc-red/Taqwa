@@ -1,21 +1,86 @@
 # Add project specific ProGuard rules here.
-# You can control the set of applied configuration files using the
-# proguardFiles setting in build.gradle.
-#
-# For more details, see
-#   http://developer.android.com/guide/developing/tools/proguard.html
+# You can find more information about how to configure ProGuard/R8 at https://developer.android.com/studio/build/shrink-code
 
-# If your project uses WebView with JS, uncomment the following
-# and specify the fully qualified class name to the JavaScript interface
-# class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}
+# ============ Application Classes ============
+-keep class com.example.noor.** { *; }
+-keep public class com.example.noor.MainActivity
+-keep public class com.example.noor.NoorWidget
+-keep public class com.example.noor.PrayerTime { *; }
 
-# Uncomment this to preserve the line number information for
-# debugging stack traces.
-#-keepattributes SourceFile,LineNumberTable
+# ============ BroadcastReceiver ============
+-keep public class * extends android.content.BroadcastReceiver
 
-# If you keep the line number information, uncomment this to
-# hide the original source file name.
-#-renamesourcefileattribute SourceFile
+# ============ Glance Widget ============
+-keep public class * extends androidx.glance.appwidget.GlanceAppWidget
+-keep public class * extends androidx.glance.appwidget.GlanceAppWidgetReceiver
+-keepclassmembers class * extends androidx.glance.appwidget.GlanceAppWidget {
+    *** provideGlance(...);
+}
+
+# ============ WorkManager ============
+-keep public class * extends androidx.work.ListenableWorker
+-keepclassmembers class * extends androidx.work.ListenableWorker {
+    public <init>(android.content.Context, androidx.work.WorkerParameters);
+}
+
+# ============ Jetpack Compose ============
+-keep class androidx.compose.** { *; }
+-keepclassmembers class androidx.compose.** { *; }
+-dontwarn androidx.compose.**
+
+# ============ Kotlin Metadata ============
+-keep class kotlin.Metadata { *; }
+-keepclassmembers class ** {
+    @kotlin.jvm.JvmStatic public static *** Companion;
+}
+-dontwarn kotlin.reflect.jvm.internal.**
+
+# ============ JSON Parsing (org.json) ============
+-keep class org.json.** { *; }
+-keepclassmembers class org.json.** { *; }
+
+# ============ Google Play Services ============
+-keep class com.google.android.gms.** { *; }
+-keepclassmembers class com.google.android.gms.** { *; }
+
+# ============ Data Classes & Constructors ============
+-keepclassmembers class * {
+    public <init>(...);
+}
+
+# ============ Android Resources ============
+-keep class **.R$* {
+    public static <fields>;
+}
+
+# ============ Keep Enum Classes ============
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+
+# ============ Keep Native Methods ============
+-keepclasseswithmembernames class * {
+    native <methods>;
+}
+
+# ============ Keep Method Names for Reflection ============
+-keepclassmembers class * {
+    *** get*();
+    *** set*(...);
+}
+
+# ============ Ignore Warnings ============
+-dontwarn androidx.**
+-dontwarn com.google.android.gms.**
+-dontwarn kotlin.**
+-dontwarn org.json.**
+
+# ============ Optimization Settings ============
+-optimizationpasses 5
+-dontusemixedcaseclassnames
+-verbose
+
+# ============ Keep Line Numbers for Crash Reports ============
+-keepattributes SourceFile,LineNumberTable
+-renamesourcefileattribute SourceFile
