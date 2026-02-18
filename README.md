@@ -37,29 +37,6 @@ A beautiful, modern Android application for tracking Ramadan prayer times with r
 
 ## 🚀 Installation
 
-### From Source
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/ssc-red/Noor.git
-   cd Noor
-   ```
-
-2. **Open in Android Studio**
-   - Launch Android Studio
-   - Select "Open an Existing Project"
-   - Navigate to the Noor directory
-
-3. **Build the project**
-   ```bash
-   ./gradlew build
-   ```
-
-4. **Run on device or emulator**
-   ```bash
-   ./gradlew installDebug
-   ```
-
 ### From APK
 
 - Download the latest release APK from the [Releases](https://github.com/ssc-red/Noor/releases) page
