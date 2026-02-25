@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.noor"
-    compileSdk = 35
+    namespace = "com.example.taqwa"
+    compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.noor"
+        applicationId = "com.example.taqwa"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
@@ -27,8 +27,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     buildFeatures {
         compose = true

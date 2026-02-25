@@ -1,4 +1,4 @@
-# 🌙 Noor - Ramadan Prayer Times App
+# 🌙 Taqwa - Ramadan Prayer Times App
 
 A beautiful, modern Android application for tracking Ramadan prayer times with real-time notifications, widget support, and an intuitive user interface.
 
@@ -39,7 +39,7 @@ A beautiful, modern Android application for tracking Ramadan prayer times with r
 
 ### From APK
 
-- Download the latest release APK from the [Releases](https://github.com/ssc-red/Noor/releases) page
+- Download the latest release APK from the [Releases](https://github.com/ssc-red/Taqwa/releases) page
 - Install on your Android device
 
 **Made with ❤️ during Ramadan for the Muslim community**

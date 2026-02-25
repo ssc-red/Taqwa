@@ -2,10 +2,10 @@
 # You can find more information about how to configure ProGuard/R8 at https://developer.android.com/studio/build/shrink-code
 
 # ============ Application Classes ============
--keep class com.example.noor.** { *; }
--keep public class com.example.noor.MainActivity
--keep public class com.example.noor.NoorWidget
--keep public class com.example.noor.PrayerTime { *; }
+-keep class com.example.taqwa.** { *; }
+-keep public class com.example.taqwa.MainActivity
+-keep public class com.example.taqwa.TaqwaWidget
+-keep public class com.example.taqwa.PrayerTime { *; }
 
 # ============ BroadcastReceiver ============
 -keep public class * extends android.content.BroadcastReceiver

@@ -1,0 +1,22 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Ground strip (using app forest green) -->
+    <path
+        android:fillColor="@color/forest_green"
+        android:pathData="M0,72h108v36h-108z" />
+
+    <!-- Tree trunk (using app forest green) -->
+    <path
+        android:fillColor="@color/forest_green"
+        android:pathData="M50,72 L58,72 L58,52 Q54,48 50,52 Z" />
+
+    <!-- Tree canopy (using app forest green) -->
+    <path
+        android:fillColor="@color/forest_green"
+        android:pathData="M34,50 Q30,42 36,38 Q34,32 42,30 Q46,24 54,26 Q62,22 70,28 Q76,30 76,38 Q82,42 78,50 Q80,56 74,58 Q70,64 62,62 Q56,68 48,64 Q40,66 36,60 Q30,58 34,50 Z" />
+
+</vector>
